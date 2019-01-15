@@ -9,6 +9,10 @@ class Header extends Component {
         console.log('I was clicked')
     }
 
+    handleChange = (event) => {
+        console.log(event.target.value)
+    }
+
     render() { 
         return ( 
             <header>
@@ -16,7 +20,10 @@ class Header extends Component {
                     className='logo'
                     onClick={this.inputChanhandler}
                 >Logo </div>
-                <input type="text"/>
+                <input 
+                    type="text"
+                    onChange={(e) => this.handleChange(e)}
+                />
             </header>
          );
     }
