@@ -16,6 +16,7 @@ class Header extends Component {
                     className='logo'
                     onClick={this.inputChanhandler}
                 >Logo </div>
+                <input type="text"/>
             </header>
          );
     }
