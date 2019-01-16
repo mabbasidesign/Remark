@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import JSON from './db.json';
-
-// COMPONENTS
-import Header from '../src/components/header';
-// import NewsList from  './components/news_list_item'
-import NewsList from './components/news_list';
+// import Header from '../src/components/header';
+// import NewsList from './components/news_list';
+import NewsList from '../src/components/News/news_list';
+import Header from '../src/components/News/header';
 
 class App extends Component {
 
@@ -14,31 +13,24 @@ class App extends Component {
         filtered: []
     }
 
-    getKeyword = (event) => {
+    getkeyword = (event) => {
         let keyword = event.target.value;
-        let filtered = this.state.news.filter(item => {
+        let filtered = this.state.news.filter((item) => {
             return item.title.indexOf(keyword) > -1
         });
-        this.setState({
-            filtered
-        })
+        this.setState({ filtered })
     }
 
-    render() { 
-        return (
-            <div>
-                <Header keyword={this.getKeyword} />
-                <NewsList news={this.state.filtered.length === 0 ? this.state.news : this.state.filtered}>
-                    <h3>
-                        The news are:
-                    </h3>
-                 </NewsList>
-            </div>
-         );
+    render(){
+       return (
+           <div>
+               <Header keyword={this.getkeyword} />
+               <NewsList news={this.state.filtered.length === 0 ? this.state.news: this.state.filtered} />
+           </div>
+       )
     }
+
 }
 
-
 export default App;
-
 ReactDOM.render(<App />, document.getElementById('root'));
