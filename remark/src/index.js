@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import JSON from './db.json';
-// import Header from '../src/components/header';
-// import NewsList from './components/news_list';
-import NewsList from '../src/components/News/news_list';
-import Header from '../src/components/News/header';
+import Header from '../src/components/header';
+import NewsList from './components/news_list';
+// import NewsList from '../src/components/News/news_list';
+// import Header from '../src/components/News/header';
 
 class App extends Component {
 
@@ -29,7 +29,6 @@ class App extends Component {
            </div>
        )
     }
-
 }
 
 export default App;
