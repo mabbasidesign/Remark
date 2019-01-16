@@ -21,6 +21,11 @@ const FormFields = (props) => {
         })
     }
     
+    const showLabel = (show, label) => {
+        return show?
+            <label> {label} </label>
+        : null
+    }
 
     const renderTemplate = (data) => {
         let formTemplate = '';
@@ -30,7 +35,11 @@ const FormFields = (props) => {
             case('input'):
             formTemplate = (
                 <div>
-                    input
+                    {showLabel(values.label, values.labelText)}
+                    <input
+                        // type={values.config.type}
+                        {...values.config}
+                    />
                 </div>
             )
                
