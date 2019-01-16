@@ -27,6 +27,10 @@ const FormFields = (props) => {
         : null
     }
 
+    const changeHandler = (event) => {
+        console.log(event.target.value);
+    }
+
     const renderTemplate = (data) => {
         let formTemplate = '';
         let values = data.settings;
@@ -39,10 +43,11 @@ const FormFields = (props) => {
                     <input
                         // type={values.config.type}
                         {...values.config}
+                        value={values.value}
+                        onChange={(event) => changeHandler(event)}
                     />
                 </div>
             )
-               
             break;
             default:
             formTemplate = null;
