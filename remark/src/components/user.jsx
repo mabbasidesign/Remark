@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import '../css/styles.css'
-import formFields from '../components/widget/form/formFields';
+import '../css/styles.css';
+import FormFields from '../components/widget/form/formFields';
 
 class User extends Component {
 
     state = {
         formData:{
             name:{
-                element: 'input',
+                elementName: 'input',
                 value: '',
                 label: true,
                 labelText: 'Name',
@@ -18,7 +18,7 @@ class User extends Component {
                 }
             },
             lastName:{
-                element: 'input',
+                elementName: 'input',
                 value: '',
                 label: true,
                 labelText: 'Lastname',
@@ -34,9 +34,9 @@ class User extends Component {
     render() { 
         return (
             <div>
-                <form onSubmit={this.submitForm}>
-                    <formFields formData={this.state.formdata} />
-                    <button onSubmit={this.submitForm}> Submit </button>
+                <form className='container' onSubmit={this.submitForm}>
+                    <FormFields formData={this.state.formData} />
+                    <button type='submit' > Submit </button>
                 </form>
             </div>
         );
