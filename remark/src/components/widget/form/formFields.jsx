@@ -8,10 +8,10 @@ const FormFields = (props) => {
         for (let elementName in props.formData){
             formArray.push({
                 id: elementName,
-                setting: props.formData[elementName]
+                settings: props.formData[elementName]
             })
         }
-        // console.log(formArray);
+        // console.log('1',formArray);
         return formArray.map((item, i) => {
             return (
                 <div key={i}>
@@ -20,20 +20,25 @@ const FormFields = (props) => {
             )
         })
     }
+    
 
     const renderTemplate = (data) => {
         let formTemplate = '';
-        let values = data.setting;
+        let values = data.settings;
 
         switch (values.element){
             case('input'):
+            formTemplate = (
                 <div>
                     input
                 </div>
+            )
+               
             break;
             default:
             formTemplate = null;
         }
+        return formTemplate;
     }
 
     return (

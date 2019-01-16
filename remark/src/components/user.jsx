@@ -7,7 +7,7 @@ class User extends Component {
     state = {
         formData:{
             name:{
-                elementName: 'input',
+                element: 'input',
                 value: '',
                 label: true,
                 labelText: 'Name',
@@ -18,7 +18,7 @@ class User extends Component {
                 }
             },
             lastName:{
-                elementName: 'input',
+                element: 'input',
                 value: '',
                 label: true,
                 labelText: 'Lastname',
