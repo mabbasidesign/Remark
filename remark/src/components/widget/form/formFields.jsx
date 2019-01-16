@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 
-const formFields = () => {
+const formFields = (props) => {
 
     const RenderField = () => {
-        
+        const formArray = [];
+        for (elementName in props.formData){
+            formArray.push({
+                id: elementName,
+                setting: props.formData[elementName]
+            })
+        }
+        console.log(formArray);
     }
 
     return (

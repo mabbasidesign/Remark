@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import '../css/styles.css'
+import formFields from '../components/widget/form/formFields';
 
 class User extends Component {
 
     state = {
-        formdata:{
+        formData:{
             name:{
                 element: 'input',
                 value: '',
@@ -34,7 +35,7 @@ class User extends Component {
         return (
             <div>
                 <form onSubmit={this.submitForm}>
-
+                    <formFields formData={this.state.formdata} />
                     <button onSubmit={this.submitForm}> Submit </button>
                 </form>
             </div>
