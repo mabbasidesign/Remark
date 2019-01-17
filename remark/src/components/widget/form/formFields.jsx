@@ -82,8 +82,21 @@ const FormFields = (props) => {
     const changeHandler = (event, id) => {
         const newState = props.formData;
         newState[id].value = event.target.value
-        // console.log(newState);
+            // console.log(newState);
+        let validDate = validate(newState[id])
+            console.log(validDate)
         props.change(newState)
+    }
+
+    const validate = (element) => {
+            console.log('element',element)
+        let error = [true, '']
+        if(element.validation.required){
+            const valid = element.value.trim() !== '';
+            const message = `${ !valid ? 'this field is require': ''}`;
+            error = !valid ? [valid, message]: error
+        }
+        return error;
     }
 
     return (

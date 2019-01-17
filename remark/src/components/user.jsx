@@ -15,7 +15,13 @@ class User extends Component {
                     name: 'name_input',
                     type: 'text',
                     placeholder: 'Please enter your name'
-                }
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage: ''
             },
             lastName:{
                 element: 'input',
@@ -26,7 +32,13 @@ class User extends Component {
                     name: 'lastname_input',
                     type: 'text',
                     placeholder: 'Enter your name'
-                }
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage: ''
             },
             message:{
                 element: 'textarea',
@@ -37,7 +49,13 @@ class User extends Component {
                     name: 'message_input',
                     rows: 4,
                     cols: 36
-                }
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage: ''
             },
             age:{
                 element: 'select',
@@ -51,7 +69,13 @@ class User extends Component {
                         {val:'2', text:'20-30'},
                         {val:'3', text:'+30'}
                     ]
-                }
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage: ''
             }
         }
     }
