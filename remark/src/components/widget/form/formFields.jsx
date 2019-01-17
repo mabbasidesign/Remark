@@ -53,6 +53,7 @@ const FormFields = (props) => {
         const newState = props.formData;
         newState[id].value = event.target.value
         // console.log(newState);
+        props.change(newState)
     }
 
     return (
