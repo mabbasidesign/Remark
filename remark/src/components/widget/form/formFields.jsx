@@ -18,7 +18,19 @@ const FormFields = (props) => {
                 </div>
             )
         })
-    }   
+    }
+
+    const showValidation = (data) => {
+        let errorMessage = null
+        if(data.validation && !data.valid ){
+            errorMessage = (
+                <div className='label_error'>
+                    {data.validationMessage}
+                </div>
+            )
+        }
+        return errorMessage;
+    }
 
     const renderTemplate = (data) => {
         let formTemplate = '';
@@ -34,6 +46,7 @@ const FormFields = (props) => {
                         value={values.value}
                         onChange={(event) => changeHandler(event, data.id)}
                     />
+                    {showValidation(values)}
                 </div>
             )
             break;
@@ -84,12 +97,15 @@ const FormFields = (props) => {
         newState[id].value = event.target.value
             // console.log(newState);
         let validDate = validate(newState[id])
-            console.log(validDate)
+            // console.log(validDate)
+        newState[id].valid = validDate[0];
+        newState[id].validationMessage = validDate[1]
+            console.log(newState)
         props.change(newState)
     }
 
     const validate = (element) => {
-            console.log('element',element)
+            // console.log('element',element)
         let error = [true, '']
         if(element.validation.required){
             const valid = element.value.trim() !== '';
