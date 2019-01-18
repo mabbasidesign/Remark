@@ -44,7 +44,8 @@ const FormFields = (props) => {
                         // type={values.config.type}
                         {...values.config}
                         value={values.value}
-                        onChange={(event) => changeHandler(event, data.id)}
+                        onBlur={(event) => changeHandler(event, data.id, true)}
+                        onChange={(event) => changeHandler(event, data.id, false)}
                     />
                     {showValidation(values)}
                 </div>
@@ -92,21 +93,29 @@ const FormFields = (props) => {
         : null
     }
 
-    const changeHandler = (event, id) => {
+    const changeHandler = (event, id, blur) => {
         const newState = props.formData;
         newState[id].value = event.target.value
             // console.log(newState);
         let validDate = validate(newState[id])
             // console.log(validDate)
-        newState[id].valid = validDate[0];
-        newState[id].validationMessage = validDate[1]
-            console.log(newState)
+        if(blur){
+            newState[id].valid = validDate[0];
+            newState[id].validationMessage = validDate[1]
+            // console.log(newState)
+        }
+        newState[id].touched = blur;
         props.change(newState)
     }
 
     const validate = (element) => {
             // console.log('element',element)
         let error = [true, '']
+        if(element.validation.minLen){
+            const valid = element.value.length >= element.validation.minLen;
+            const message = `${ !valid ? 'Must be greater then ' + element.validation.minLen: ''}`;
+            error = !valid ? [valid, message]: error
+        }
         if(element.validation.required){
             const valid = element.value.trim() !== '';
             const message = `${ !valid ? 'this field is require': ''}`;

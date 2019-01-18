@@ -17,7 +17,8 @@ class User extends Component {
                     placeholder: 'Please enter your name'
                 },
                 validation:{
-                    required: true
+                    required: true,
+                    minLen: 5
                 },
                 valid: false,
                 touched: false,
@@ -51,11 +52,11 @@ class User extends Component {
                     cols: 36
                 },
                 validation:{
-                    required: true
+                    required: false
                 },
-                valid: false,
-                touched: false,
-                validationMessage: ''
+                valid: true,
+                // touched: false,
+                // validationMessage: ''
             },
             age:{
                 element: 'select',
@@ -73,9 +74,9 @@ class User extends Component {
                 validation:{
                     required: true
                 },
-                valid: false,
-                touched: false,
-                validationMessage: ''
+                valid: true,
+                // touched: false,
+                // validationMessage: ''
             }
         }
     }
@@ -88,19 +89,26 @@ class User extends Component {
     submitForm = (event) => {
         event.preventDefault();
         let dataToSubmit = {};
+        let formIsValid = true;
 
         for(let key in this.state.formData){
             dataToSubmit[key] = this.state.formData[key].value;
         }
-        console.log(dataToSubmit)
+        for(let key in this.state.formData){
+            formIsValid = this.state.formData[key].valid && formIsValid;
+        }
+        if(formIsValid){
+            console.log(dataToSubmit)
+        }
     }
 
-    render() { 
+    render() {
         return (
             <div>
                 <form className='container' onSubmit={this.submitForm}>
                     <FormFields
                         formData={this.state.formData}
+                        onblur={(newState) => this.updateForm(newState)}
                         change={(newState) => this.updateForm(newState)}
                     />
                     <button type='submit' > Submit </button>
@@ -109,5 +117,5 @@ class User extends Component {
         );
     }
 }
- 
+
 export default User;
